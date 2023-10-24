@@ -21,8 +21,12 @@ class MyApp(tk.Tk):
         button_mult_files = tk.Button(text='Open multiple images', width=20, height=2,
                                 command=lambda:self.select_files())
         
+        button_start_remove = tk.Button(text='Start removing', width=20, height=2,
+                                        command=lambda:self.remover())
+        
         label_info.grid(pady=5,padx=50)
-        button_mult_files.grid(pady=40,padx=5)
+        button_mult_files.grid(pady=120,padx=5)
+        button_start_remove.grid(pady=15,padx=5)
 
     def select_files(self):
         self.files_input = askopenfilenames()
@@ -30,11 +34,16 @@ class MyApp(tk.Tk):
 
     def remover(self):
         session = new_session()
+        print(self.files_input)
+
+        f = lambda x: x.split('.')[0]+'_out.'+x.split('.')[1]
 
         for n in self.files_input:
-
-            with open(n.name,'rb') as i:
-                with open(lambda x: x.split('.')[0]+'_out.'+x.split('.')[1](n.name), 'wb') as o:
+            print(n)
+            with open(n,'rb') as i:
+                
+                print(f(n))
+                with open(f(n), 'wb') as o:
                     input = i.read()
                     out = remove(input,session)
                     o.write(out)
