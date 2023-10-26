@@ -4,7 +4,7 @@ import tkinter as tk
 if __name__=="__main__":
     # It initializates the App to mainloop it
     ROOT = tk.Tk()
-    ROOT.geometry("900x700")
+    ROOT.geometry("700x700")
     ROOT.configure(background="AntiqueWhite3")
     APP = MyApp(parent=ROOT)
     APP.mainloop()
